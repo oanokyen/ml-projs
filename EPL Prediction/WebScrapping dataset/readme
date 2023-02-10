@@ -1,1 +1,3 @@
-
+I scrapped the data for the Pythagorean prediction from "www.worldfootball.net"
+There are other ways to go about it but I kept updating the URL in a loop and appended to a list. 
+The list was then transformed into a DF and finally the DF to a csv.
