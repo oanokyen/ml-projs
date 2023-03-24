@@ -1,9 +1,9 @@
 # Predicting Graduate Admission Prediction
 
-Dataset from Kaggle - I have uploaded a copy in this repo.
+Graduate admissions process is very competitive and depends on various factors publications, GPA etc.  
 
-Also build a function for simplified logistic regression - available here
-Feel free to customized.
+The goal of project is to build a ML model to predict admission of students using these factors above and comparing with an out of sample dataset to evaluate performance.
+Also possibly, checking if there are more important features i.e. less factors are able predict to a great level.
 
 If you have any questions or suggestions, feel free to reach out [here](mailto:oa.anokyenkansah@gmail.com)
 
@@ -12,4 +12,4 @@ If you have any questions or suggestions, feel free to reach out [here](mailto:o
 
 > Students.csv : Dataset downloaded from [kaggle](https://www.kaggle.com/datasets/rosiellenpassos/student-admission-data)
 
-> 
+> logisticregression_with_pca_reduction_possibility.py : Simplified Logistic Regression Function with python 
