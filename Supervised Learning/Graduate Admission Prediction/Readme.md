@@ -12,4 +12,4 @@ If you have any questions or suggestions, feel free to reach out [here](mailto:o
 
 > Students.csv : Dataset downloaded from [kaggle](https://www.kaggle.com/datasets/rosiellenpassos/student-admission-data)
 
-> logisticregression_with_pca_reduction_possibility.py : Simplified Logistic Regression Function with python 
+> utils.py : Simplified Logistic Regression Function with python 
