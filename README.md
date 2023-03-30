@@ -1,2 +1,5 @@
-# ML_steps
-Machine Learning Projects
+# Machine Learning Projects
+
+*   Supervised Learning
+*   Unsupervised Learning
+*   Other General Prediction Projects
