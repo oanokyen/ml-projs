@@ -1,1 +1,5 @@
+English Premier League (EPL) is one of the most popular football leagues in the world.
 
+This project focuses on using the first 16 matches played by teams to predict their final league standing.
+
+Pythagorean expectation is used for the prediction. 
