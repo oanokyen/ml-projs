@@ -10,5 +10,5 @@ The AI player's decision-making process is limited to a `single depth`, *specifi
 The initial moves of the AI player are determined by heuristics, including a preference for starting in the center square and responding with a corner square when the opponent starts with the center square.
 
 
-Tic-tac-toe Game
-(Play Tic-tac-toe game here)[https://codeinplace.stanford.edu/cip3/share/IYHhtaviuZy7AnEVhmIa] 
+*Tic-tac-toe Game*
+[https://codeinplace.stanford.edu/cip3/share/IYHhtaviuZy7AnEVhmIa](Play Tic-tac-toe game here)
