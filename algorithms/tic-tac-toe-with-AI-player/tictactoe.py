@@ -14,7 +14,8 @@ import copy
 CANVAS_WIDTH = 400
 CANVAS_HEIGHT = 400
 
-SIZE = 100
+TEXT_SIZE=90
+CIRCLE_SIZE=80
 
 DELAY=0.01
 
@@ -57,6 +58,7 @@ def main():
                 canvas.wait_for_click()
                 time.sleep(DELAY)
                 click_x,click_y = canvas.get_last_click()
+                print(click_x, ",",click_y )
             
                 for i in list_of_boundary:
                     if round(click_x) <= (round(i[0])) and (round(click_y) <= round(i[1])):
@@ -70,8 +72,8 @@ def main():
                     game_error_pop_up(canvas,time)
                     
             # user generates circle
-            circle = canvas.create_oval(x_dim, y_dim, x_dim+SIZE, y_dim+SIZE, color="white")
-            dent_circle = create_hole(canvas, x_dim, y_dim, SIZE ,"black")
+            circle = canvas.create_oval(x_dim, y_dim, x_dim+CIRCLE_SIZE, y_dim+CIRCLE_SIZE, color="white")
+            dent_circle = create_hole(canvas, x_dim, y_dim, CIRCLE_SIZE ,"black")
             
             # update user choices
             USER_1,available_moves = update_choice(USER_1,available_moves,i)
@@ -84,11 +86,17 @@ def main():
             cpu_choice = cpu_player(canvas,list_of_boundary, available_moves,USER_1,USER_2)
             cpu_x_dim,cpu_y_dim = cpu_choice
             
-            cpu_x_dim,cpu_y_dim =round(cpu_x_dim)-CANVAS_WIDTH*(1/6)-(SIZE/2), round(cpu_y_dim)-CANVAS_HEIGHT*(1/6)-(SIZE/2)
+            cpu_x_dim,cpu_y_dim = center_text(cpu_x_dim,cpu_y_dim)
+            
+            #cpu_x_dim,cpu_y_dim =cpu_x_dim-(CANVAS_WIDTH*(1/6))-(SIZE/3), cpu_y_dim-(CANVAS_HEIGHT*(1/6))-(SIZE/2.5)
+            
+            #cpu_x_dim,cpu_y_dim =round(cpu_x_dim)-CANVAS_WIDTH*(1/6)-(SIZE/2), round(cpu_y_dim)-CANVAS_HEIGHT*(1/6)-(SIZE/2)
+            #cpu_x_dim,cpu_y_dim=center_point(cpu_x_dim, cpu_y_dim)
+            #cpu_x_dim,cpu_y_dim =round(cpu_x_dim)-(SIZE/2), round(cpu_y_dim)-(SIZE/2)
             
             time.sleep(DELAY*20)
-            text = canvas.create_text(cpu_x_dim+(SIZE/7),cpu_y_dim, text='X', font_size=SIZE+20, font="Lato", color="white")
-            
+            #text = canvas.create_text(cpu_x_dim+(SIZE/5),cpu_y_dim+(SIZE/8), text='X', font_size=SIZE, font="Lato", color="white")
+            text = canvas.create_text(cpu_x_dim,cpu_y_dim, text='X', font_size=TEXT_SIZE, font="Lato", color="white")
             canvas.delete(cpu_text)
             # up
 
@@ -122,15 +130,15 @@ def draw_winning_sequence(canvas, result,winning_sequence):
     if result == "You win!":
         for i in winning_sequence:
             x_dim, y_dim = center_point(i[0], i[1])
-            circle = canvas.create_oval(x_dim, y_dim, x_dim+SIZE, y_dim+SIZE, color="green")
-            dent_circle = create_hole(canvas, x_dim, y_dim, SIZE ,"black")
+            circle = canvas.create_oval(x_dim, y_dim, x_dim+CIRCLE_SIZE, y_dim+CIRCLE_SIZE, color="green")
+            dent_circle = create_hole(canvas, x_dim, y_dim, CIRCLE_SIZE ,"black")
         
         
     elif result == "AI wins!":
         for i in winning_sequence:
             cpu_x_dim,cpu_y_dim = i
-            cpu_x_dim,cpu_y_dim =round(cpu_x_dim)-CANVAS_WIDTH*(1/6)-(SIZE/2), round(cpu_y_dim)-CANVAS_HEIGHT*(1/6)-(SIZE/2)
-            text = canvas.create_text(cpu_x_dim+(SIZE/7),cpu_y_dim, text='X', font_size=SIZE+20, font="Lato", color="red")
+            cpu_x_dim,cpu_y_dim = center_text(cpu_x_dim,cpu_y_dim)
+            text = canvas.create_text(cpu_x_dim,cpu_y_dim, text='X', font_size=TEXT_SIZE, font="Lato", color="red")
 
 def display_result(canvas, result):
     '''Display final result after game ends
@@ -208,13 +216,19 @@ def game_error_pop_up(canvas,time):
     canvas.delete(pop_up)
 
 def create_hole(canvas, x_dim, y_dim,size,color):
-    x1, y1, x2, y2 = x_dim+(SIZE*1/8), y_dim+(SIZE*1/8), x_dim+SIZE-(SIZE*1/8), y_dim+SIZE-(SIZE*1/8)
+    x1, y1, x2, y2 = x_dim+(CIRCLE_SIZE*1/16), y_dim+(CIRCLE_SIZE*1/16), x_dim+CIRCLE_SIZE-(CIRCLE_SIZE*1/16), y_dim+CIRCLE_SIZE-(CIRCLE_SIZE*1/16)
     canvas.create_oval(x1, y1, x2,y2, color)
     
+def center_text(x_coord, y_coord):
+    x_coord,y_coord= x_coord-(CANVAS_WIDTH*(1/6))-(TEXT_SIZE/3), y_coord-(CANVAS_HEIGHT*(1/6))-(TEXT_SIZE/2)
+    
+    return x_coord, y_coord
+
 def center_point(x_coord, y_coord):
     ''' Center the shapes in the middle of each square
     '''
-    x_centred, y_centred= round(x_coord)-CANVAS_WIDTH*(1/6)-(SIZE/2), round(y_coord)-CANVAS_HEIGHT*(1/6)-(SIZE/2)
+    x_centred, y_centred= round(x_coord)-CANVAS_WIDTH*(1/6)-(CIRCLE_SIZE/2), round(y_coord)-CANVAS_HEIGHT*(1/6)-(CIRCLE_SIZE/2)
+    
     return x_centred, y_centred
 
 def update_choice(user,squares_available,i):
