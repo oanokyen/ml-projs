@@ -12,3 +12,5 @@ The initial moves of the AI player are determined by heuristics, including a pre
 
 ### Tic-tac-toe Game
 > [Play Tic-tac-toe game here](https://codeinplace.stanford.edu/cip3/share/IYHhtaviuZy7AnEVhmIa)
+
+![image](https://github.com/oanokyen/ml-projs/assets/72044731/309d46db-e0cd-4485-95ad-2946a4359b0a)
